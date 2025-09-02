@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Spice - Authentic Indian Cuisine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #D35400;
+            --primary-light: #E67E22;
+            --primary-dark: #B03A2E;
+            --accent: #F1C40F;
+            --accent-light: #F39C12;
+            --dark: #2C3E50;
+            --light: #FDFEFE;
+            --gold: #D4AC0D;
+            --maroon: #922B21;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #FDFEFE, #FBEEE6);
+            color: var(--dark);
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+        }
+        
+      
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            padding: 0px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-content {
+            max-width: 500px;
+            width: 100%;
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+      
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 2.5rem;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+            border: 3px solid var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+   
+       .nav-container {
+    position: fixed;
+    top: 50%;
+    right: 20%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 8px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, 
+nav a.active {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--primary); 
+}
+
+       
+        .hero {
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .restaurant-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="40" stroke="%23F1C40F" stroke-width="2" fill="none" /><path d="M30,30 L70,70 M70,30 L30,70" stroke="%23F1C40F" stroke-width="2" /></svg>');
+            background-size: 80px;
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        
+        .tagline {
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .specialty-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            background: rgba(211, 84, 0, 0.1);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--accent);
+        }
+        
+        .cta-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        
+        .card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+    .menu-item {
+  background: var(--light);
+  padding: 15px;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid #FDEBD0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.menu-item:hover {
+  background: #FEF9E7;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden; 
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.menu-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.menu-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--primary-dark);
+}
+
+.menu-item p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.price {
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+      
+.gallery-grid {
+  column-count: 3; 
+  column-gap: 12px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+         
+        .contact-info {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #FEF9E7;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: #FDEBD0;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .feedback-rating i{
+            color: #E67E22;
+        }
+        
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #FDEBD0;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(211, 84, 0, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn, .review-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: block;
+            margin: 0 auto;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-btn:hover .review-btn:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(211, 84, 0, 0.4);
+        }
+        .review-btn a{
+            text-decoration: none;
+            color: white;
+
+        }
+        
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #FEF9E7;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid #FDEBD0;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        
+        .decorative-border {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .indian-pattern {
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" width="100" height="10"><circle cx="5" cy="5" r="3" fill="%23D35400" /><circle cx="25" cy="5" r="3" fill="%23D35400" /><circle cx="45" cy="5" r="3" fill="%23D35400" /><circle cx="65" cy="5" r="3" fill="%23D35400" /><circle cx="85" cy="5" r="3" fill="%23D35400" /></svg>');
+            background-repeat: repeat-x;
+            opacity: 0.7;
+            margin: 15px 0;
+        }
+        
+       
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(211, 84, 0, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .scroll-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+        
+
+         .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .share-option {
+            padding: 20px 15px;
+            border-radius: var(--radius);
+            background: var(--gray);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .share-option:hover {
+            background: rgba(58, 123, 213, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .share-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .qr-scanner {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: var(--gray);
+            border: 1ps solid black;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        .copy-link {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .copy-link input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid var(--gray);
+            border-radius: var(--radius) 0 0 var(--radius);
+            border-right: none;
+            font-size: 0.9rem;
+        }
+        
+        .copy-link button {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border: 1px solid black;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        
+        @media (max-width: 500px) {
+            .page-content {
+                padding: 20px;
+            }
+            
+            .menu-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .scroll-indicator {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="scroll-indicator">
+        <a href="#main" class="scroll-dot active"></a>
+        <a href="#about" class="scroll-dot"></a>
+        <a href="#menu" class="scroll-dot"></a>
+        <a href="#gallery" class="scroll-dot"></a>
+        <a href="#testimonials" class="scroll-dot"></a>
+        <a href="#contact" class="scroll-dot"></a>
+        <a href="#location" class="scroll-dot"></a>
+    </div>
+
+   
+    <section id="main" class="page">
+        <div class="page-content">
+            <div class="header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="logo-text">Royal Spice</div>
+                    <div class="logo-subtext">Authentic Indian Cuisine</div>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <div class="restaurant-image">
+                    Exquisite Indian Dining Experience
+                </div>
+                
+                <h1>Welcome to Royal Spice</h1>
+                <p class="tagline">Where Tradition Meets Taste</p>
+                
+                <div class="specialty-badges">
+                    <div class="badge">North Indian</div>
+                    <div class="badge">South Indian</div>
+                    <div class="badge">Mughlai</div>
+                </div>
+                
+                <p>Experience the rich flavors and aromatic spices of India in every dish. Our master chefs bring you authentic recipes passed down through generations.</p>
+                
+                <div class="cta-buttons">
+                    <a href="tel:+919876543210" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/919876512345" class="btn btn-whatsapp">
+                       <i class="fab fa-whatsapp"></i>WhatsApp
+                    </a>
+                    <a href="#menu" class="btn btn-secondary">
+                        <i class="fas fa-book"></i> View Menu
+                    </a>
+                    <a href="#location" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Directions
+                    </a>
+                </div>
+            </div>
+            
+            <div class="indian-pattern"></div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="page">
+        <div class="page-content">
+            <h2>Our Story</h2>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="card">
+                <h3>Traditional Recipes</h3>
+                <p>Since 1995, Royal Spice has been serving authentic Indian cuisine using traditional recipes and cooking methods. Our dishes are prepared with the finest spices imported directly from India.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Master Chefs</h3>
+                <p>Our chefs bring over 20 years of experience from various regions of India, ensuring that each dish represents the true flavors of its origin.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Our Philosophy</h3>
+                <p>We believe in serving food that not only delights your taste buds but also brings the rich cultural heritage of India to your plate.</p>
+            </div>
+            
+            <div class="indian-pattern"></div>
+            
+            <h3>Restaurant Hours</h3>
+            <div class="card">
+                <p><strong>Monday - Thursday:</strong> 11:00 AM - 10:00 PM</p>
+                <p><strong>Friday - Saturday:</strong> 11:00 AM - 11:00 PM</p>
+                <p><strong>Sunday:</strong> 12:00 PM - 9:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+ 
+    <section id="menu" class="page">
+        <div class="page-content">
+            <h2>Our Specialties</h2>
+            <p>Explore our exquisite menu featuring dishes from across India</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-icon">
+                        <img src="https://media.istockphoto.com/id/1170729895/photo/indian-butter-chicken-horizontal-photo.jpg?s=612x612&w=0&k=20&c=4bZViynoVnP1HaWHIY1k5FvW-dj9DM2EOMHbKnAqYZ4=" alt="">
+                    </div>
+                    <h3>Butter Chicken</h3>
+                    <p>Tender chicken in creamy tomato gravy</p>
+                    <div class="price">₹425</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-icon">
+                     <img src="https://orders.popskitchen.in/storage/2024/09/image-358.png" alt="">
+                    </div>
+                    <h3>Paneer Tikka</h3>
+                    <p>Grilled cottage cheese with spices</p>
+                    <div class="price">₹375</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-icon">
+                        <img src="https://vismaifood.com/storage/app/uploads/public/daa/96d/7bc/thumb__700_0_0_0_auto.jpg" alt="">
+                    </div>
+                    <h3>Fish Curry</h3>
+                    <p>South Indian style fish in coconut gravy</p>
+                    <div class="price">₹475</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-icon">
+                       <img src="https://t3.ftcdn.net/jpg/08/95/50/04/360_F_895500474_IDUMxbOGEBn29tyPyjG8oLEEWlK8ZlOg.jpg" alt="">
+                    </div>
+                    <h3>Naan Basket</h3>
+                    <p>Assorted freshly baked breads</p>
+                    <div class="price">₹225</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-icon">
+                     <img src="https://static.vecteezy.com/system/resources/previews/054/743/080/large_2x/the-perfect-dish-of-chicken-biryani-for-your-culinary-inspiration-photo.jpg" alt="">
+                    </div>
+                    <h3>Biryani</h3>
+                    <p>Fragrant rice with choice of meat</p>
+                    <div class="price">₹395</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-icon">
+                       <img src="https://t3.ftcdn.net/jpg/01/41/76/88/360_F_141768845_jsbAAHDmY0zTasngshLDnKEzpwbA9noi.jpg" alt="">
+                    </div>
+                    <h3>Kulfi</h3>
+                    <p>Traditional Indian ice cream</p>
+                    <div class="price">₹175</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" class="btn btn-primary" download="BrightSmile Dental Care.pdf">
+                    <i class="fas fa-download"></i> Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+  
+   
+<section id="gallery" class="page">
+  <div class="page-content">
+    <h2>Gallery</h2>
+    <p>Take a visual tour of our restaurant and dishes</p>
+
+    <div class="decorative-border"></div>
+
+   
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item"><img src="https://thumbs.dreamstime.com/b/kesar-pista-kulfi-also-spelled-khulfi-qulfi-popular-frozen-dairy-dessert-indian-subcontinent-often-88813940.jpg" alt="Food 1"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=500&q=80" alt="Food 2"></div>
+      <div class="gallery-item"><img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?_gl=1*16811oq*_ga*NTk2ODQ2NzU3LjE3NTY0NDUzMzM.*_ga_8JE65Q40S6*czE3NTY3MDkzOTEkbzMkZzAkdDE3NTY3MDkzOTEkajYwJGwwJGgw" alt="Food 3"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="Food 4"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="Food 5"></div>
+      <div class="gallery-item"><img src="https://images.pexels.com/photos/33681484/pexels-photo-33681484.jpeg?_gl=1*1x1q2gk*_ga*NTk2ODQ2NzU3LjE3NTY0NDUzMzM.*_ga_8JE65Q40S6*czE3NTY3MDkzOTEkbzMkZzEkdDE3NTY3MDk0OTUkajMwJGwwJGgw" alt="Food 6"></div>
+      <div class="gallery-item"><img src="https://media.istockphoto.com/id/481507989/photo/indian-concierge-welcome-guest-at-hotel-entrance-india.jpg?s=612x612&w=0&k=20&c=mnvuPkx7BdabB17pDqbe5iqhUbHyuYqObxmdhAz7k5E=" alt="Food 7"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Food 8"></div>
+      <div class="gallery-item"><img src="https://images.pexels.com/photos/941869/pexels-photo-941869.jpeg?cs=srgb&dl=pexels-chanwalrus-941869.jpg&fm=jpg" alt="Food 9"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qZ-53KJImQM4VTvTJT0FUs3P9sD3esfUcQ&s" alt="Food 10"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=500&q=80" alt="Food 11"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR02DQWI6tjdkFyZHyN1lMao-Msl3x1nJTlOQ&s" alt="Food 12"></div>
+      <div class="gallery-item"><img src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2025-01/2023-Flavor-Banner.jpeg.jpeg" alt="Food 13"></div>
+      <div class="gallery-item"><img src="https://media.istockphoto.com/id/1169694902/photo/assorted-indian-non-vegetarian-food-recipe-served-in-a-group-includes-chicken-curry-mutton.jpg?s=612x612&w=0&k=20&c=J4jX3IYGdS3ODgHF0LHCySDo6bFObh0_GZzAqHgXZgU=" alt="Food 14"></div>
+      <div class="gallery-item"><img src="https://img.freepik.com/free-photo/side-lamb-ragout-with-fried-onion-carrot-tomato-sauce-greens-vegetable-salad-table_141793-4744.jpg" alt="Food 15"></div>
+      <div class="gallery-item"><img src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2024-12/Hotel%20restaurant.jpg" alt="Food 16"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9UqM5qO2_-IaN6gkSsJOHFuEO9lTlt5IO5Q&s" alt="Food 17"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=500&q=80" alt="Food 18"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwdXbqYj1h2kxD4phrudivKLc_AKnsj3gKXg&s" alt="Food 19"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtF0KOl5cHt5aY1GH1kIzvKpGyi39gjlYDmw&s" alt="Food 20"></div>
+    </div>
+  </div>
+</section>
+
+
+   
+    <section id="testimonials" class="page">
+        <div class="page-content">
+            <h2>Customer Reviews</h2>
+            <p>What our customers say about us</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">R</div>
+                    <div>
+                        <div class="feedback-name">Rajesh Mehta</div>
+                        <div class="feedback-date">September 15, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The best Indian food I've had outside of India! The flavors are authentic and the service is exceptional."</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">S</div>
+                    <div>
+                        <div class="feedback-name">Sarah Johnson</div>
+                        <div class="feedback-date">August 28, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"The ambiance is wonderful and the food is even better. The butter chicken is to die for!"</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">A</div>
+                    <div>
+                        <div class="feedback-name">Amit Patel</div>
+                        <div class="feedback-date">August 10, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"As someone from Gujarat, I can say the dhokla and thepla here taste just like home."</p>
+            </div>
+
+      <button class="review-btn"><a href="https://www.google.com/search?q=dn+global+reach&sca_esv=7e7ead78d89c5fa2&rlz=1C1VDKB_enIN1175IN1175&sxsrf=AE3TifNDQcILsZ8gsLdGm3B5GRf10dFFDQ%3A1756708341798&ei=9T21aNPCMJORseMPqcehgAU&oq=dn+global&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWRuIGdsb2JhbCoCCAAyChAjGIAEGCcYigUyBBAjGCcyCxAuGIAEGMcBGK8BMgUQABiABDILEC4YgAQYxwEYrwEyCxAuGIAEGMcBGK8BMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHkiWKVAAWM4ccAF4AZABAJgB7AGgAYkOqgEFMC44LjK4AQHIAQD4AQGYAgugAvIPwgILEAAYgAQYkQIYigXCAgoQABiABBhDGIoFwgINEAAYgAQYsQMYQxiKBcICCBAAGIAEGLEDwgILEAAYgAQYsQMYgwHCAg4QLhiABBixAxjRAxjHAcICCBAuGIAEGLEDwgIFEC4YgATCAgoQABiABBgUGIcCwgIHEAAYgAQYCsICDRAuGIAEGLEDGOUEGArCAgoQABiABBixAxgKwgIKEC4YgAQY5QQYCpgDAJIHBTEuNS41oAegngGyBwUwLjUuNbgH3w_CBwUzLTYuNcgH1AE&sclient=gws-wiz-serp&lqi=Cg9kbiBnbG9iYWwgcmVhY2haESIPZG4gZ2xvYmFsIHJlYWNokgEQbWFya2V0aW5nX2FnZW5jeaoBXAoNL2cvMTF4c3JyaGdoZhABKhMiD2RuIGdsb2JhbCByZWFjaCgAMh8QASIbSHCT38WqEMaD5E__Igo0A_I2esQyY-5MI5-4MhMQAiIPZG4gZ2xvYmFsIHJlYWNo#rlimm=13875518218366617738&lrd=0x8c6fd9c7c2b9149d:0xc08fbe4dd034088a,3,,,,">Write Review</a></button>
+
+        </div>
+    </section>
+
+   
+    <section id="contact" class="page">
+        <div class="page-content">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>123, Spice Market Road, Connaught Place, New Delhi - 110001</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@royalspice.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Sunday: 11:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Make a Reservation</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" placeholder="Your Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" placeholder="Date">
+            </div>
+            <div class="form-group">
+                <input type="time" class="form-control" placeholder="Time">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" placeholder="Number of Guests" min="1">
+            </div>
+            <button class="submit-btn">Book Table</button>
+        </div>
+    </section>
+
+   
+    <section id="location" class="page">
+        <div class="page-content">
+            <h2>Find Us</h2>
+            <p>Visit us at our location</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="gallery-item" style="height: 200px; margin-bottom: 20px;">
+               <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019041907252!2d-122.41941508468152!3d37.77492927975916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c7f5d6d7b%3A0xe4c7b82a1d1f6b21!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1634558531234!5m2!1sen!2sus" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+            </div>
+            
+            <div class="card">
+                <h3>Directions</h3>
+                <p>We are located in the heart of Connaught Place, just a 5-minute walk from Rajiv Chowk Metro Station. Look for the building with traditional Indian decor.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Parking</h3>
+                <p>Valet parking available at the main entrance. Additional parking available at the nearby Palika Parking.</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://maps.app.goo.gl/kYZdZzUwQyxW2kJj6" class="btn btn-primary">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <section id="sharing" class="page">
+                <div class="page-content">
+                      <h2>Share This Card</h2>
+            <p>Share our digital visiting card with your friends and family.</p>
+            
+            <div class="share-options">
+                <div class="share-option" onclick="shareVia('whatsapp')">
+                    <div class="share-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <p>WhatsApp</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('facebook')">
+                    <div class="share-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <p>Facebook</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('twitter')">
+                    <div class="share-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <p>Twitter</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('email')">
+                    <div class="share-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p>Email</p>
+                </div>
+            </div>
+            
+            <h3>Scan QR Code</h3>
+            <div class="qr-scanner">
+                <div class="dummy-image" style="width: 150px; height: 150px;"><img src="imgs/qrcode.png" alt="" width="100px"></div>
+                <p style="margin-top: 10px; text-align: center;">Scan to save our contact</p>
+            </div>
+            
+            <h3>Copy Link</h3>
+            <div class="copy-link">
+                <input type="text" id="profile-link" value="https://dnglobalreach.com/" readonly>
+                <button onclick="copyLink()">Copy</button>
+            </div>
+                </div>
+
+     </section>
+    
+    <div class="nav-container">
+    <nav>
+        <a href="#main" class="active">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#about">
+            <i class="fas fa-info-circle"></i>
+        </a>
+        <a href="#menu">
+            <i class="fas fa-utensils"></i>
+        </a>
+        <a href="#testimonials">
+            <i class="fas fa-star"></i>
+        </a>
+        <a href="#contact">
+            <i class="fas fa-phone"></i>
+        </a>
+            <a href="#location">
+             <i class="fa-solid fa-location-crosshairs"></i>
+        </a>
+       
+       <a href="#sharing">
+            <i class="fa-solid fa-share-from-square"></i>
+        </a>
+       
+    </nav>
+</div>
+
+
+
+
+    <script>
+      
+        const sections = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('nav a');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        
+       
+        function updateActiveStates() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            scrollDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href').substring(1) === current) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+const items = document.querySelectorAll("#galleryGrid .gallery-item");
+  let current = 0;
+
+  function showSet() {
+    items.forEach((item, i) => {
+      item.style.display = (i >= current && i < current + 10) ? "block" : "none";
+    });
+    current = (current + 10) % items.length;
+  }
+
+
+  showSet();
+
+
+  setInterval(showSet, 5000);
+
+
+   
+        window.addEventListener('scroll', updateActiveStates);
+        
+        
+        document.querySelectorAll('.submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Thank you for your reservation! We will confirm shortly.');
+            });
+        });
+        
+      
+        window.addEventListener('load', updateActiveStates);
+    </script>
+</body>
+</html>
